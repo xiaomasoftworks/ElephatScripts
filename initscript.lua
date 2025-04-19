@@ -239,5 +239,7 @@ getgenv().getconnection = newcclosure(function(signal, index)
     end
 end)
 
+load_autoexec_scripts()
+
 --loadstring(game:HttpGet('https://raw.githubusercontent.com/xiaomasoftworks/ElephatScripts/refs/heads/main/luaudrawlib.lua'))()
 

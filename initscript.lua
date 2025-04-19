@@ -240,5 +240,5 @@ getrenv().shared = getscriptglobals().shared
 getgenv().checkclosure = getgenv().isexecutorclosure
 getgenv().isourclosure = getgenv().isexecutorclosure
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/xiaomasoftworks/ElephatScripts/refs/heads/main/luaudrawlib.lua'))()
+--loadstring(game:HttpGet('https://raw.githubusercontent.com/xiaomasoftworks/ElephatScripts/refs/heads/main/luaudrawlib.lua'))()
 

@@ -190,7 +190,48 @@ getgenv().require = newcclosure(function(v)
     return succ and res or nil
 end)
 
+getgenv().getscripts = newcclosure(function()
+    local a = {}
+    for b,c in next,getreg() do
+        if type(c)=="table" then
+            for d,e in next,c do
+                if typeof(e) == "Instance" and (e:IsA("LocalScript") or e:IsA("ModuleScript")) then
+                    table.insert(a,e)
+                elseif typeof(e) == "Instance" and (e:IsA("Script")) then
+                    if e.RunContext == Enum.RunContext.Client then
+                        table.insert(a,e)
+                    end
+                end
+            end
+        end
+    end
+    return a
+end)
 
+getgenv()["getscripthash"] = newcclosure(function(Inst)
+    assert(typeof(Inst) == "Instance", "invalid argument #1 to 'getscripthash' (Instance expected, got " .. typeof(Inst) .. ") ", 2)
+	assert(Inst:IsA("LuaSourceContainer"), "invalid argument #1 to 'getscripthash' (LuaSourceContainer expected, got " .. Inst["ClassName"] .. ") ", 2)
+    if Inst:IsA("Script") then
+        if Inst.RunContext == Enum.RunContext.Client then
+            return getscripthash_handler(Inst)
+        end
+    end
+	return getscripthash_handler(Inst)
+end)
+
+getgenv()["getscriptclosure"] = newcclosure(function(Inst)
+    assert(typeof(Inst) == "Instance", "invalid argument #1 to 'getscriptclosure' (Instance expected, got " .. typeof(Inst) .. ") ", 2)
+	assert(Inst:IsA("LuaSourceContainer"), "invalid argument #1 to 'getscriptclosure' (LuaSourceContainer expected, got " .. Inst["ClassName"] .. ") ", 2)
+    if Inst:IsA("Script") then
+        if Inst.RunContext == Enum.RunContext.Client then
+            return getscriptclosure_handler(Inst)
+        end
+    end
+	return getscriptclosure_handler(Inst)
+end)
+
+getrenv()._G = getscriptglobals()._G
+getrenv().shared = getscriptglobals().shared
 
 getgenv().checkclosure = getgenv().isexecutorclosure
 getgenv().isourclosure = getgenv().isexecutorclosure

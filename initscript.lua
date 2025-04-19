@@ -1,81 +1,5 @@
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
-
-local VirtualInputManager = game:GetService("VirtualInputManager")
-local UserInputService = game:GetService("UserInputService")
-local InsertService = game:GetService("InsertService")
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-
-local ExploitInfo = table.freeze({
-    ["Name"] = "%Elephat-BETA%",
-})
-
-local ClientInfo = {
-	["IsWindowFocused"] = true
-}
-
-local RobloxEnvironment = table.freeze({
-	["print"] = print, ["warn"] = warn, ["error"] = error, ["assert"] = assert, ["collectgarbage"] = collectgarbage, ["require"] = require,
-	["select"] = select, ["tonumber"] = tonumber, ["tostring"] = tostring, ["type"] = type, ["xpcall"] = xpcall,
-	["pairs"] = pairs, ["next"] = next, ["ipairs"] = ipairs, ["newproxy"] = newproxy, ["rawequal"] = rawequal, ["rawget"] = rawget,
-	["rawset"] = rawset, ["rawlen"] = rawlen, ["gcinfo"] = gcinfo,
-
-	["coroutine"] = {
-		["create"] = coroutine["create"], ["resume"] = coroutine["resume"], ["running"] = coroutine["running"],
-		["status"] = coroutine["status"], ["wrap"] = coroutine["wrap"], ["yield"] = coroutine["yield"],
-	},
-
-	["bit32"] = {
-		["arshift"] = bit32["arshift"], ["band"] = bit32["band"], ["bnot"] = bit32["bnot"], ["bor"] = bit32["bor"], ["btest"] = bit32["btest"],
-		["extract"] = bit32["extract"], ["lshift"] = bit32["lshift"], ["replace"] = bit32["replace"], ["rshift"] = bit32["rshift"], ["xor"] = bit32["xor"],
-	},
-
-	["math"] = {
-		["abs"] = math["abs"], ["acos"] = math["acos"], ["asin"] = math["asin"], ["atan"] = math["atan"], ["atan2"] = math["atan2"], ["ceil"] = math["ceil"],
-		["cos"] = math["cos"], ["cosh"] = math["cosh"], ["deg"] = math["deg"], ["exp"] = math["exp"], ["floor"] = math["floor"], ["fmod"] = math["fmod"],
-		["frexp"] = math["frexp"], ["ldexp"] = math["ldexp"], ["log"] = math["log"], ["log10"] = math["log10"], ["max"] = math["max"], ["min"] = math["min"],
-		["modf"] = math["modf"], ["pow"] = math["pow"], ["rad"] = math["rad"], ["random"] = math["random"], ["randomseed"] = math["randomseed"],
-		["sin"] = math["sin"], ["sinh"] = math["sinh"], ["sqrt"] = math["sqrt"], ["tan"] = math["tan"], ["tanh"] = math["tanh"]
-	},
-
-	["string"] = {
-		["byte"] = string["byte"], ["char"] = string["char"], ["find"] = string["find"], ["format"] = string["format"], ["gmatch"] = string["gmatch"],
-		["gsub"] = string["gsub"], ["len"] = string["len"], ["lower"] = string["lower"], ["match"] = string["match"], ["pack"] = string["pack"],
-		["packsize"] = string["packsize"], ["rep"] = string["rep"], ["reverse"] = string["reverse"], ["sub"] = string["sub"],
-		["unpack"] = string["unpack"], ["upper"] = string["upper"],
-	},
-
-	["table"] = {
-		["clone"] = table.clone, ["concat"] = table.concat, ["insert"] = table.insert, ["pack"] = table.pack, ["remove"] = table.remove, ["sort"] = table.sort,
-		["unpack"] = table.unpack,
-	},
-
-	["utf8"] = {
-		["char"] = utf8["char"], ["charpattern"] = utf8["charpattern"], ["codepoint"] = utf8["codepoint"], ["codes"] = utf8["codes"],
-		["len"] = utf8["len"], ["nfdnormalize"] = utf8["nfdnormalize"], ["nfcnormalize"] = utf8["nfcnormalize"],
-	},
-
-	["os"] = {
-		["clock"] = os["clock"], ["date"] = os["date"], ["difftime"] = os["difftime"], ["time"] = os["time"],
-	},
-
-	["delay"] = delay, ["elapsedTime"] = elapsedTime, ["spawn"] = spawn, ["tick"] = tick, ["time"] = time, ["typeof"] = typeof,
-	["UserSettings"] = UserSettings, ["version"] = version, ["wait"] = wait, ["_VERSION"] = _VERSION,
-
-	["task"] = {
-		["defer"] = task["defer"], ["delay"] = task["delay"], ["spawn"] = task["spawn"], ["wait"] = task["wait"], ["cancel"] = task["cancel"]
-	},
-
-	["debug"] = {
-		["traceback"] = debug["traceback"], ["profilebegin"] = debug["profilebegin"], ["profileend"] = debug["profileend"],
-	},
-
-	["game"] = game, ["workspace"] = workspace, ["Game"] = game, ["Workspace"] = workspace,
-
-	["getmetatable"] = getmetatable, ["setmetatable"] = setmetatable
-})
-
 getgenv().saveinstance = function(Options)
 	 local Params = {
         RepoURL = "https://raw.githubusercontent.com/luau/SynSaveInstance/main/",
@@ -207,6 +131,40 @@ getgenv().getscripts = newcclosure(function()
     end
     return a
 end)
+getgenv().getactors = newcclosure(function()
+    local actors = {};
+    for i, v in game:GetDescendants() do
+        if v:IsA("Actor") then
+            table.insert(actors, v);
+        end
+    end
+    return actors;
+end);
+
+getgenv().get_actors = getgenv().getactors
+getgenv().GetActors = getgenv().getactors
+getgenv().getActors = getgenv().getactors
+
+do
+    local CoreGui = game:GetService('CoreGui')
+    local HttpService = game:GetService('HttpService')
+
+    local comm_channels = CoreGui:FindFirstChild('comm_channels') or Instance.new('Folder', CoreGui)
+    if comm_channels.Name ~= 'comm_channels' then
+        comm_channels.Name = 'comm_channels'
+    end
+    getgenv().create_comm_channel = newcclosure(function() 
+        local id = HttpService:GenerateGUID()
+        local event = Instance.new('BindableEvent', comm_channels)
+        event.Name = id
+        return id, event
+    end)
+
+    getgenv().get_comm_channel = newcclosure(function(id) 
+        assert(type(id) == 'string', 'string expected as argument #1')
+        return comm_channels:FindFirstChild(id)
+    end)
+end
 
 getgenv()["getscripthash"] = newcclosure(function(Inst)
     assert(typeof(Inst) == "Instance", "invalid argument #1 to 'getscripthash' (Instance expected, got " .. typeof(Inst) .. ") ", 2)
@@ -239,6 +197,47 @@ getrenv().shared = getscriptglobals().shared
 
 getgenv().checkclosure = getgenv().isexecutorclosure
 getgenv().isourclosure = getgenv().isexecutorclosure
+getgenv().iselephatclosure = getgenv().isexecutorclosure
+
+getgenv().isnetworkowner = function(part: BasePart): boolean
+    return part.ReceiveAge == 0 and not part.Anchored and part.Velocity.Magnitude > 0
+end
+
+getgenv().setsimulationradius = function(newRadius)
+    assert(newRadius, `arg #1 is missing`)
+    assert(type(newRadius) == "number", `arg #1 must be type number`)
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    if LocalPlayer then
+        LocalPlayer.SimulationRadius = newRadius
+        LocalPlayer.MaximumSimulationRadius = newRadius
+    end
+end
+
+getgenv().getsimulationradius = function()
+    assert(newRadius, `arg #1 is missing`)
+    assert(type(newRadius) == "number", `arg #1 must be type number`)
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    if LocalPlayer then
+        return LocalPlayer.SimulationRadius
+    end
+end
+
+getgenv().http = {}
+getgenv().http.request = request
+setreadonly(http, true)
+
+getgenv().http_request = request
+
+getgenv().getconnection = newcclosure(function(signal, index)
+    local connections = getconnections(signal)
+    if index > 0 and index <= #connections then
+        return connections[index]
+    else
+        return nil
+    end
+end)
 
 --loadstring(game:HttpGet('https://raw.githubusercontent.com/xiaomasoftworks/ElephatScripts/refs/heads/main/luaudrawlib.lua'))()
 

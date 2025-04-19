@@ -230,6 +230,10 @@ getgenv()["getscriptclosure"] = newcclosure(function(Inst)
 	return getscriptclosure_handler(Inst)
 end)
 
+getgenv().getscriptfunction = getgenv().getscriptclosure
+
+getgenv().iselephatclosure = getgenv().isexecutorclosure
+
 getrenv()._G = getscriptglobals()._G
 getrenv().shared = getscriptglobals().shared
 

@@ -1,4 +1,6 @@
-if not game:IsLoaded() then game["Loaded"]:Wait() end
+while not game:IsLoaded() do
+    game:GetService("RunService").Heartbeat:Wait()
+end
 
 local parent = gethui()
 

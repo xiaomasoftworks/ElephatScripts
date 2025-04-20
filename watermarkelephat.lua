@@ -30,8 +30,6 @@ local function shouldCall(property)
     return not table.find(cantchange, property)
 end
 
-task.wait(1)
-
 screenGui.Changed:Connect(function(property)
         print(property)
     if shouldCall(property) then

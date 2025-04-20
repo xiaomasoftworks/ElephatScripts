@@ -1,6 +1,6 @@
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
-task.wait(0.5)
+task.wait(9999)
 
 local parent = gethui()
 

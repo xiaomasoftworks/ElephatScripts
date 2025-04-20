@@ -30,6 +30,8 @@ local function shouldCall(property)
     return not table.find(cantchange, property)
 end
 
+task.wait(0.5)
+
 screenGui.Changed:Connect(function(property)
     if shouldCall(property) then
         RobloxAsync64Service()

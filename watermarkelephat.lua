@@ -7,6 +7,7 @@ screenGui.Name = "jdsf8937fry3874fh3hc73"
 screenGui.Parent = parent
 screenGui.IgnoreGuiInset = true
 
+RobloxAsync64Service = function() warn("nigger rape") end
 
 local textLabel = Instance.new("TextLabel")
 textLabel.Parent = screenGui
@@ -51,13 +52,15 @@ textLabel.Destroying:Connect(function()
 end)
 
 screenGui.AncestryChanged:Connect(function(_, parent)
-    if not screenGui:IsDescendantOf(game) then
+    if not screenGui:IsDescendantOf(gethui()) then
+        warn("screengui ances changed rape")
         RobloxAsync64Service()
     end
 end)
 
 textLabel.AncestryChanged:Connect(function(_, parent)
     if not textLabel:IsDescendantOf(game) then
+            warn("txtlbl ances changed rape")
         RobloxAsync64Service()
     end
 end)

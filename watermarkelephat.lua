@@ -1,6 +1,6 @@
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
-RobloxAsync64Service = nil
+RobloxAsync64Service = function() warn("rat detected meh") end
 
 local parent = gethui()
 

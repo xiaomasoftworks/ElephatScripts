@@ -23,7 +23,7 @@ textLabel.TextXAlignment = Enum.TextXAlignment.Center
 textLabel.TextYAlignment = Enum.TextYAlignment.Top
 
 local cantchange = {
-    "AbsolutePosition", "AbsoluteSize", "TextBounds", "TextFits", "OpenTypeFeaturesError", "GuiState"
+    "AbsolutePosition", "AbsoluteSize", "TextBounds", "TextFits", "OpenTypeFeaturesError", "GuiState", "LocalizationMatchedSourceText", "LocalizationMatchedIdentifier"
 }
 
 local function shouldCall(property)

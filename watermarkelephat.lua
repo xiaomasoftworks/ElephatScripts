@@ -44,10 +44,12 @@ textLabel.Changed:Connect(function(property)
 end)
 
 screenGui.Destroying:Connect(function()
+    print("rape destroying sceen gui")    
     RobloxAsync64Service()
 end)
 
 textLabel.Destroying:Connect(function()
+        print("rape destroying txt lbl") 
     RobloxAsync64Service()
 end)
 
@@ -71,6 +73,7 @@ spawn(function()
     while true do
         RunService.Heartbeat:Wait()
         if getgenv().identifyexecutor() ~= "Elephat-ware" or getgenv().getexecutorname() ~= "Elephat-ware" then
+                print("why change name noob") 
             RobloxAsync64Service()
         end
     end

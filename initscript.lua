@@ -1,6 +1,6 @@
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
-getgenv().saveinstance = function(Options)
+getgenv().saveinstance = newcclosure(function(Options)
 	 local Params = {
         RepoURL = "https://raw.githubusercontent.com/luau/SynSaveInstance/main/",
         SSI = "saveinstance",
@@ -8,7 +8,7 @@ getgenv().saveinstance = function(Options)
      local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
      --local Options = {} -- Documentation here https://luau.github.io/UniversalSynSaveInstance/api/SynSaveInstance
      synsaveinstance(Options)
-end
+end)
 
 getgenv().isexecutorclosure = newcclosure(function(fnc)
 	local genv = getgenv();

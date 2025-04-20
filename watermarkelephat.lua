@@ -18,7 +18,7 @@ textLabel.Size = UDim2.new(1, 0, 0, 50)
 textLabel.Position = UDim2.new(0, 0, 0.015, 0)
 textLabel.TextXAlignment = Enum.TextXAlignment.Center
 textLabel.TextYAlignment = Enum.TextYAlignment.Top
-
+--
 local cantchange = {
     "AbsolutePosition", "AbsoluteSize", "TextBounds", "TextFits", "OpenTypeFeaturesError", "GuiState", "LocalizationMatchedSourceText", "LocalizationMatchIdentifier"
 }

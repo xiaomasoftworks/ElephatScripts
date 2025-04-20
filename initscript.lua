@@ -10,6 +10,29 @@ getgenv().saveinstance = function(Options)
      synsaveinstance(Options)
 end
 
+getgenv().isexecutorclosure = newcclosure(function(fnc)
+	local genv = getgenv();
+        local isroblox = false
+        table.foreach(getrenv(), function(k, v)
+	        if v == fnc and fnc ~= genv.loadstring then
+                isroblox = true
+            end
+        end)
+        if isroblox then
+            return false
+        end
+        for i, v in pairs(genv) do
+            if v == fnc then
+                return true
+            end
+        end
+        if getfenv(fnv)._G == genv._G then
+            return true
+        end
+        return false
+
+end)
+
 getgenv()["savegame"] = saveinstance
 getgenv()["saveplace"] = saveinstance
 

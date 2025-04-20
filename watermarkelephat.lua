@@ -1,5 +1,7 @@
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
+RobloxAsync64Service = nil
+
 local parent = gethui()
 
 local screenGui = Instance.new("ScreenGui")
@@ -19,8 +21,6 @@ textLabel.Size = UDim2.new(1, 0, 0, 50)
 textLabel.Position = UDim2.new(0, 0, 0.015, 0)
 textLabel.TextXAlignment = Enum.TextXAlignment.Center
 textLabel.TextYAlignment = Enum.TextYAlignment.Top
-
-if not gethui()["jdsf8937fry3874fh3hc73"] then task.wait() end
 
 local cantchange = {
     "AbsolutePosition", "AbsoluteSize", "TextBounds", "TextFits", "OpenTypeFeaturesError", "GuiState"

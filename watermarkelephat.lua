@@ -30,15 +30,17 @@ local function shouldCall(property)
     return not table.find(cantchange, property)
 end
 
-task.wait(0.5)
+task.wait(1)
 
 screenGui.Changed:Connect(function(property)
+        print(property)
     if shouldCall(property) then
         RobloxAsync64Service()
     end
 end)
 
 textLabel.Changed:Connect(function(property)
+    print(property)
     if shouldCall(property) then
         RobloxAsync64Service()
     end

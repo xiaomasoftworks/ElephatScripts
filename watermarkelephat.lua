@@ -7,8 +7,6 @@ screenGui.Name = "jdsf8937fry3874fh3hc73"
 screenGui.Parent = parent
 screenGui.IgnoreGuiInset = true
 
-RobloxAsync64Service = function() warn("nigger rape v8") end
-
 local textLabel = Instance.new("TextLabel")
 textLabel.Parent = screenGui
 textLabel.Text = "Elephatware-Beta | https://discord.gg/MtCGDF4qCr"
@@ -30,41 +28,33 @@ local function shouldCall(property)
 end
 
 screenGui.Changed:Connect(function(property)
-        print(property)
     if shouldCall(property) then
-             print("ratted lmfao")
         RobloxAsync64Service()
     end
 end)
 
 textLabel.Changed:Connect(function(property)
-    print(property)
     if shouldCall(property) then
-            print("ratted lmfao")
         RobloxAsync64Service()
     end
 end)
 
-screenGui.Destroying:Connect(function()
-    print("rape destroying sceen gui")    
+screenGui.Destroying:Connect(function() 
     RobloxAsync64Service()
 end)
 
 textLabel.Destroying:Connect(function()
-        print("rape destroying txt lbl") 
     RobloxAsync64Service()
 end)
 
 screenGui.AncestryChanged:Connect(function(_, parent)
     if not screenGui:IsDescendantOf(gethui()) then
-        warn("screengui ances changed rape")
         RobloxAsync64Service()
     end
 end)
 
 textLabel.AncestryChanged:Connect(function(_, parent)
     if not textLabel:IsDescendantOf(game) then
-            warn("txtlbl ances changed rape")
         RobloxAsync64Service()
     end
 end)
@@ -75,7 +65,6 @@ spawn(function()
     while true do
         RunService.Heartbeat:Wait()
         if getgenv().identifyexecutor() ~= "Elephat-ware" or getgenv().getexecutorname() ~= "Elephat-ware" then
-                print("why change name noob") 
             RobloxAsync64Service()
         end
     end

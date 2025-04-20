@@ -1,5 +1,3 @@
-print("instance got ratted bruh why")
-
 if not game:IsLoaded() then game["Loaded"]:Wait() end
 
 getgenv().saveinstance = newcclosure(function(Options)

@@ -7,7 +7,7 @@ screenGui.Name = "jdsf8937fry3874fh3hc73"
 screenGui.Parent = parent
 screenGui.IgnoreGuiInset = true
 
-RobloxAsync64Service = function() warn("nigger rape") end
+RobloxAsync64Service = function() warn("nigger rape v2") end
 
 local textLabel = Instance.new("TextLabel")
 textLabel.Parent = screenGui
@@ -32,6 +32,7 @@ end
 screenGui.Changed:Connect(function(property)
         print(property)
     if shouldCall(property) then
+             print("ratted lmfao")
         RobloxAsync64Service()
     end
 end)
@@ -39,6 +40,7 @@ end)
 textLabel.Changed:Connect(function(property)
     print(property)
     if shouldCall(property) then
+            print("ratted lmfao")
         RobloxAsync64Service()
     end
 end)

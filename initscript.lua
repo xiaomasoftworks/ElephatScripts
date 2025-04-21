@@ -40,7 +40,24 @@ getgenv().saveinstance = newcclosure(function(Options)
      --local Options = {} -- Documentation here https://luau.github.io/UniversalSynSaveInstance/api/SynSaveInstance
      synsaveinstance(Options)
 end)
+getgenv().fireclickdetector = newcclosure(function(clickdetector, distance, eventtype)
+    local plr = game.Players.LocalPlayer
+    assert(typeof(clickdetector) == "Instance", "invalid argument #1 to 'fireclickdetector' (Instance expected, got " .. type(Target) .. ") ", 2)
+)
+    local defaultType = "MouseClick"
+	local ClickDetectorTypes = {
+		"MouseClick",
+		"RightMouseClick",
+		"MouseHoverEnter",
+		"MouseHoverLeave",
+	} 
 
+    if eventtype and typeof(eventtype) == "string" and clickdetector[eventtype]  then
+		firesignal(clickdetector[eventtype], plr)
+	else
+	 firesignal(clickdetector.MouseClick, plr)
+	end
+end)
 getgenv()["savegame"] = saveinstance
 getgenv()["saveplace"] = saveinstance
 

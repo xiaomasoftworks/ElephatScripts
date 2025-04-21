@@ -42,8 +42,7 @@ getgenv().saveinstance = newcclosure(function(Options)
 end)
 getgenv().fireclickdetector = newcclosure(function(clickdetector, distance, eventtype)
     local plr = game.Players.LocalPlayer
-    assert(typeof(clickdetector) == "Instance", "invalid argument #1 to 'fireclickdetector' (Instance expected, got " .. type(Target) .. ") ", 2)
-)
+    assert(typeof(clickdetector) == "Instance", "First argument is not clickdetector")
     local defaultType = "MouseClick"
 	local ClickDetectorTypes = {
 		"MouseClick",

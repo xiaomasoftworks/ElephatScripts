@@ -43,7 +43,7 @@ local _vector2new = (renv.Vector2.new);
 local _destroy = (game.Destroy);
 local _gettextboundsasync = (textService.GetTextBoundsAsync);
 
-local _httpget = (game.HttpGet);
+local _httpget = httpget;
 local _writecustomasset = function(path, data)
 	writefile(path,data)
 	return getcustomasset(path)

@@ -113,4 +113,4 @@ getgenv().syn_getnilinstances = getnilinstances
 getgenv().syn_fireclickdetector = fireclickdetector
 getgenv().syn_getgc = getgc
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/xiaomasoftworks/ElephatScripts/refs/heads/main/luaudrawlib.lua'))()
+--loadstring(game:HttpGet('https://raw.githubusercontent.com/xiaomasoftworks/ElephatScripts/refs/heads/main/luaudrawlib.lua'))()

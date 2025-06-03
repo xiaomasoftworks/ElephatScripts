@@ -82,12 +82,6 @@ getgenv()["consolesettitle"] = rconsolesettitle
 getgenv()["console_set_title"] = rconsolesettitle
 getgenv()["ConsoleSetTitle"] = rconsolesettitle
 
-getgenv().http = {}
-getgenv().http.request = request
-setreadonly(http, true)
-
-getgenv().http_request = request
-
 getgenv().getconnection = newcclosure(function(signal, index)
     local connections = getconnections(signal)
     if index > 0 and index <= #connections then
